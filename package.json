@@ -1,6 +1,6 @@
 {
   "name": "hj-app-tools",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "微众银行--火鸡项目--工具",
   "main": "index.js",
   "scripts": {
