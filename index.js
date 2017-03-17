@@ -1,7 +1,7 @@
 var path = require("path");
 var fs = require("fs");
 
-var writeNum = 0;
+
 
 /**
  * 写内容到文件
@@ -14,12 +14,11 @@ function writeToFile(dstPath, content, isAppend) {
     //创建文件夹
     mkdirs(newFileDirName, function () {
         //输出目的文件--用于调试
-        if (isAppend && writeNum) {
+        if (isAppend) {
             fs.appendFile(dstPath, content)
         } else {
             fs.writeFile(dstPath, content);
         }
-        writeNum++
     });
 }
 
@@ -54,7 +53,7 @@ function filterWithConifg(srcStr, config) {
     var filterStr = _fiterStr;
 
     if (enclude.length == 0 && exclude.length == 0) {
-        return true;
+        return false;
     }
 
     if (filterStr(srcStr, exclude)) {
