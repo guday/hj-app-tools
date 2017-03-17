@@ -1,7 +1,7 @@
 {
   "name": "hj-app-tools",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "微众银行--火鸡项目--工具",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
