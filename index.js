@@ -75,5 +75,37 @@ function filterWithConifg(srcStr, config) {
     }
 }
 
+var msgLinesArr = [];
+var msgStrArr = [];
+var lastPrintLines = 0;
+/**
+ * 打印进度
+ * @param msg
+ * @param flagStr
+ */
+function ProgressMsg(msg) {
+    this.stream = process.stderr;
+    this.streamIndex = msgLinesArr.length;
+    msgLinesArr.push(this.streamIndex);
+    msgStrArr.push(msg || "");
+
+}
+
+ProgressMsg.prototype.logMsg = function (msg) {
+    msgStrArr[this.streamIndex] = msg;
+
+    if (lastPrintLines > 1) {
+        this.stream.moveCursor(0, (lastPrintLines * -1)+1)
+    }
+    this.stream.clearLine();
+    this.stream.cursorTo(0);
+
+    var msgStr = msgStrArr.join("\n");
+    this.stream.write(msgStr);
+    lastPrintLines = msgStrArr.length;
+
+};
+
 exports.writeToFile = writeToFile;
 exports.filterWithConifg = filterWithConifg;
+exports.ProgressMsg = ProgressMsg;
