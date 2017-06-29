@@ -15,9 +15,13 @@ function writeToFile(dstPath, content, isAppend) {
     mkdirs(newFileDirName, function () {
         //输出目的文件--用于调试
         if (isAppend) {
-            fs.appendFile(dstPath, content)
+            fs.appendFile(dstPath, content, function () {
+                
+            })
         } else {
-            fs.writeFile(dstPath, content);
+            fs.writeFile(dstPath, content, function () {
+                
+            });
         }
     });
 }
