@@ -99,13 +99,13 @@ ProgressMsg.prototype.logMsg = function (msg) {
     msgStrArr[this.streamIndex] = msg;
 
     if (lastPrintLines > 1) {
-        this.stream.moveCursor(0, (lastPrintLines * -1)+1)
+        this.stream.moveCursor && this.stream.moveCursor(0, (lastPrintLines * -1)+1)
     }
-    this.stream.clearLine();
-    this.stream.cursorTo(0);
+    this.stream.clearLine && this.stream.clearLine();
+    this.stream.cursorTo && this.stream.cursorTo(0);
 
     var msgStr = msgStrArr.join("\n");
-    this.stream.write(msgStr);
+    this.stream.write && this.stream.write(msgStr);
     lastPrintLines = msgStrArr.length;
 
 };
